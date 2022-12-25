@@ -5,8 +5,8 @@ terraform {
       version               = "~> 4"
       configuration_aliases = [aws.this, aws.peer]
     }
+  }
 }
-  
 provider "aws" {
   alias      = "jp"
   region     = "ap-northeast-1"
