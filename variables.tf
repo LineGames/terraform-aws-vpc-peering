@@ -10,6 +10,18 @@ variable "this_vpc_id" {
   default     = ""
 }
 
+variable "aws_this" {
+  description = "provider this id: string"
+  type        = string
+  default     = ""
+}
+
+variable "aws_peer" {
+  description = "provider peer id: string"
+  type        = string
+  default     = ""
+}
+
 variable "auto_accept_peering" {
   description = "Auto accept peering connection: bool"
   type        = bool
