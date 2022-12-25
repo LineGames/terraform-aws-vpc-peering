@@ -2,7 +2,7 @@
 # VPC peering connection #
 ##########################
 resource "aws_vpc_peering_connection" "this" {
-  provider      = aws.this
+  provider      = var.aws_this
   peer_owner_id = data.aws_caller_identity.peer.account_id
   peer_vpc_id   = var.peer_vpc_id
   vpc_id        = var.this_vpc_id
@@ -19,7 +19,7 @@ resource "aws_vpc_peering_connection" "this" {
 # VPC peering accepter configuration #
 ######################################
 resource "aws_vpc_peering_connection_accepter" "peer_accepter" {
-  provider                  = aws.peer
+  provider                  = var.aws_peer
   vpc_peering_connection_id = aws_vpc_peering_connection.this.id
   auto_accept               = var.auto_accept_peering
   tags                      = merge(var.tags, tomap({ "Side" = local.same_acount_and_region ? "Both" : "Accepter" }))
